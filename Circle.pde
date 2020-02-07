@@ -4,22 +4,23 @@ KetaiSensor sensor;
 float accelerometerX, accelerometerY, accelerometerZ;
 
 class Circle {
-  PVector pos = new PVector();
+  
   private float speed;  
- 
+  private float x;
+  private float y;
   
   public Circle (float xx, float yy, float spd) {
-    this.pos.x = xx;
-    this.pos.y = yy;
-    this.speed = spd;
+    x = xx;
+    y = yy;
+    speed = spd;
   }
   
   public void display() {
-    circle(this.pos.x, this.pos.y,25);
+    circle(x, y, 25);
   }
   
   public void move() {
-    pos.x += accelerometerX;
-    pos.y += accelerometerY;
+    x -= accelerometerX;
+    y += accelerometerY;
   }
 }
