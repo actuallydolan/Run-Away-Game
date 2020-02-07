@@ -1,7 +1,4 @@
-import ketai.sensors.*;
-
-KetaiSensor sensor;
-float accelerometerX, accelerometerY, accelerometerZ;
+Circle john = new Circle(50, 50, 25);
 
 void setup()
 {
@@ -15,10 +12,8 @@ void setup()
 void draw()
 {
   background(78, 93, 75);
-  text("Accelerometer: \n" + 
-    "x: " + nfp(accelerometerX, 1, 3) + "\n" +
-    "y: " + nfp(accelerometerY, 1, 3) + "\n" +
-    "z: " + nfp(accelerometerZ, 1, 3), 0, 0, width, height);
+  john.display();
+  john.move();
 }
 
 void onAccelerometerEvent(float x, float y, float z)
