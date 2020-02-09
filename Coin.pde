@@ -3,9 +3,9 @@ class Coin {
   private float x;
   private float y;
 
-  public Coin (float xx, float yy) {
-    x = xx;
-    y = yy;
+  public Coin () {
+    x = (float) random(width - 10);
+    y = (float) random(height - 10);
   }
   
   public void update() {
