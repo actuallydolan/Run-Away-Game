@@ -23,6 +23,8 @@ class Coin {
   }
   
   public boolean collide(float a, float b, float c, float d, float e, float f) {
+  	//parameters a, b, and c are the width, height, and diameter of the first circle
+	//parameters d, e, and f are the width, height, and diameter of the second circle
 	boolean isColliding = false;
 	if(dist(a, b, d, e) < c + f)) {
 		isColliding = true;
