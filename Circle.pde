@@ -1,5 +1,4 @@
 import ketai.sensors.*;
-
 KetaiSensor sensor;
 float accelerometerX, accelerometerY, accelerometerZ;
 
@@ -34,8 +33,9 @@ class Circle {
     float distance_y = other.y - y;
 
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
-    if (distance < (other.radius/2 + 25/2)) {
+    if (distance < (16)) {
       john.outOfBounds();
+      end = true;
     }
   }
 
@@ -49,7 +49,11 @@ class Circle {
   }
 
   void outOfBounds() {
-    if (john.x>width+12.5 || john.y>height+12.5 || john.x<12.5 || john.y<12.5) {
+    if (john.x>width-22.5 || john.y>height-22.5 || john.x<22.5 || john.y<22.5) {
+      end = true;
+    }
+
+    if (end) {
       rect(0, 0, width, height);
       background(255, 0, 0);
       john.x = 1000000000;
@@ -57,6 +61,9 @@ class Circle {
       String s = "Game Over" + "\n" + "tap to play again";
       text(s, width/2, height/2);
       fill(255, 255, 255);
+
+      String displayScore = "Your Score: " + score;
+      text (displayScore, width-100, TOP);
     }
   }
 }
