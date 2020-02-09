@@ -18,6 +18,7 @@ class Circle {
     display();
     move();
     outOfBounds();
+    coins.get(0).update();
     while (enemies.size() < score) { 
       enemies.add(new Enemy(random(width), random(height), random(1+0.1*score, 3+0.1*score)));
     }
