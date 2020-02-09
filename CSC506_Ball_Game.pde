@@ -17,7 +17,6 @@ void setup()
 
 void draw()
 {
-<<<<<<< Updated upstream
   if (level==0) {
     background(0, 204, 228);
     text("Accelerometer: \n" + 
@@ -34,16 +33,9 @@ void draw()
     noStroke();
     rect(0, 0, borderStroke, height);
   } else {
-    rect(0, 0, width, height);
-    background(255, 0, 0);
-    john.x = 1000000000;
-    john.y = 1000000000; 
-    String s = "Game Over" + "\n" + "tap to play again";
-    text(s, width/2, height/2);
-    fill(255, 255, 255);
+    john.outOfBounds()
   }
 }
-
 
   void onAccelerometerEvent(float x, float y, float z)
   {

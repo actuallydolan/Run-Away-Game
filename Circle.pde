@@ -47,12 +47,6 @@ class Circle {
     x -= accelerometerX;
     y += accelerometerY;
   }
-<<<<<<< Updated upstream
-  
-  void outOfBounds(){
-    if (john.x>width-22.5 || john.y>height-22.5 || john.x<22.5 || john.y<22.5){
-      level=1;
-=======
 
   void outOfBounds() {
     if (john.x>width+12.5 || john.y>height+12.5 || john.x<12.5 || john.y<12.5) {
@@ -63,7 +57,6 @@ class Circle {
       String s = "Game Over" + "\n" + "tap to play again";
       text(s, width/2, height/2);
       fill(255, 255, 255);
->>>>>>> Stashed changes
     }
   }
 }
