@@ -22,11 +22,12 @@ class Coin {
    }
   }
   
-  public void collide() {
-    //if radius of circle overlap, then remove
-    //use arraylist then??
-    //add points
-    //test2
-  }
+  public boolean collide(float a, float b, float c, float d, float e, float f) {
+	boolean isColliding = false;
+	if(dist(a, b, d, e) < c + f)) {
+		isColliding = true;
+	}
+	return isColliding;
+}
   
 }
