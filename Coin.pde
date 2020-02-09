@@ -8,7 +8,7 @@ class Coin {
     y = yy;
   }
   
-  public void be() {
+  public void update() {
     display();
     collide();
   }
@@ -21,6 +21,7 @@ class Coin {
   public void collide() {
     //if radius of circle overlap, then remove
     //use arraylist then??
+    //add points
   }
   
 }
