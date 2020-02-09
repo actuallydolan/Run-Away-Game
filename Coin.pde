@@ -14,8 +14,12 @@ class Coin {
   }
   
   public void display() {
-    //if no Coin
-    //circle(randomx, randomy, size 25)
+    int coinCount = 0;
+
+     if(coinCount == 0) {
+	    circle(x, y, 16);
+	    ++coinCount;
+   }
   }
   
   public void collide() {
