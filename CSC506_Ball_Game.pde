@@ -33,6 +33,7 @@ void draw()
   for (int i= 0; i<score; i++) { 
     enemies.add(new Enemy(random(-100, 0), random(height), random(1+0.1*score, 3+0.1*score)));
   }
+  john.outOfBounds();
 }
 
 void onAccelerometerEvent(float x, float y, float z)
