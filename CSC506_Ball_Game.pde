@@ -22,6 +22,13 @@ void draw()
     "z: " + nfp(accelerometerZ, 1, 3), 0, 0, width, height);
   john.display();
   john.move();
+  while (enemies.size() < score) { 
+    enemies.add(new Enemy(random(width), random(height), random(1+0.1*score, 3+0.1*score)));
+  }
+  for (int i = 0; i < enemies.size(); i ++) {
+    enemies.get(i).display();
+    enemies.get(i).move(john);
+  }
   noStroke();
   rect(0, 0, width, borderStroke);
   noStroke();
@@ -30,9 +37,11 @@ void draw()
   rect(0, height - borderStroke, width, borderStroke);
   noStroke();
   rect(0, 0, borderStroke, height);
-  for (int i= 0; i<score; i++) { 
-    enemies.add(new Enemy(random(-100, 0), random(height), random(1+0.1*score, 3+0.1*score)));
+  if (mousePressed==true && score < 10) {
+    score++;
+    System.out.println("work");
   }
+  john.outOfBounds();
 }
 
 void onAccelerometerEvent(float x, float y, float z)

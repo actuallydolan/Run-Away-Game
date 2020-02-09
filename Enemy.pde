@@ -24,11 +24,4 @@ class Enemy {
     x -= cos(angle)*speed;
     y -= sin(angle)*speed;
   }
-
-  public void update() {//incorporates display method and move method into one method and implements them for every grinch
-    for (int i = 0; i < enemies.size(); i ++) {
-      enemies.get(i).display();
-      enemies.get(i).move(john);
-    }
-  }
 }
