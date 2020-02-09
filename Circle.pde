@@ -63,8 +63,9 @@ class Circle {
       text(s, width/2, height/2);
       fill(255, 255, 255);
 
+      // String displayScore = "Highscore: " + highScore "\n" + "Your Score: " + score;
       String displayScore = "Your Score: " + score;
-      text (displayScore, width-100, TOP);
+      text (displayScore, width-120, 80);
     }
   }
 }
