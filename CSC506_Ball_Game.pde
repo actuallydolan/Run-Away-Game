@@ -1,5 +1,7 @@
 Circle john = new Circle(width/2, height/2, 25);
+ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 int borderStroke = 5;
+int score = 0;
 
 void setup()
 {
@@ -28,6 +30,9 @@ void draw()
   rect(0, height - borderStroke, width, borderStroke);
   noStroke();
   rect(0, 0, borderStroke, height);
+  for (int i= 0; i<score; i++) { 
+    enemies.add(new Enemy(random(-100, 0), random(height), random(1+0.1*score, 3+0.1*score)));
+  }
 }
 
 void onAccelerometerEvent(float x, float y, float z)
