@@ -59,6 +59,7 @@ class Circle {
       background(255, 0, 0);
       john.x = 1000000000;
       john.y = 1000000000; 
+      textAlign(CENTER);
       String s = "Game Over" + "\n" + "tap to play again";
       text(s, width/2, height/2);
       fill(255, 255, 255);
