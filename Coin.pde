@@ -20,6 +20,7 @@ class Coin {
 	    circle(x, y, 16);
 	    ++coinCount;
    }
+   text(coinCount, 10, 100);
   }
   
   public boolean collide(float a, float b, float c, float d, float e, float f) {
