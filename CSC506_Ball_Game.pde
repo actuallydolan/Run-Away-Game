@@ -2,8 +2,8 @@ Circle john = new Circle(200, 200, 25);
 ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 Coin c = new Coin();
 int borderStroke = 10;
-int score = 0;
-int level = 0;
+int score = 1;
+boolean end = false;
 
 void setup()
 {
@@ -17,7 +17,7 @@ void setup()
 
 void draw()
 {
-  if (level==0) {
+  if (!end) {
     background(0, 204, 228);
     text("Accelerometer: \n" + 
       "x: " + nfp(accelerometerX, 1, 3) + "\n" +
@@ -33,7 +33,7 @@ void draw()
     noStroke();
     rect(0, 0, borderStroke, height);
   } else {
-    john.outOfBounds()
+    john.outOfBounds();
   }
 }
 
