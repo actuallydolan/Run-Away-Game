@@ -20,9 +20,13 @@ void draw()
     "z: " + nfp(accelerometerZ, 1, 3), 0, 0, width, height);
   john.display();
   john.move();
+  noStroke();
   rect(0, 0, width, borderStroke);
+  noStroke();
   rect(width - borderStroke, 0, borderStroke, height);
+  noStroke();
   rect(0, height - borderStroke, width, borderStroke);
+  noStroke();
   rect(0, 0, borderStroke, height);
 }
 
