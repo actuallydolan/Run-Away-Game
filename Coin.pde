@@ -22,7 +22,6 @@ class Coin {
     //if radius of circle overlap, then remove
     //use arraylist then??
     //add points
-    //test
   }
   
 }
