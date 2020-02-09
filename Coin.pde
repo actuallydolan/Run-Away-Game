@@ -3,10 +3,9 @@ class Coin {
   private float x;
   private float y;
 
-  public Circle (float xx, float yy, float spd) {
+  public Coin (float xx, float yy) {
     x = xx;
     y = yy;
-    speed = spd;
   }
   
   public void be() {
