@@ -66,6 +66,8 @@ void draw()
     rect(0, height - borderStroke, width, borderStroke);
     noStroke();
     rect(0, 0, borderStroke, height);
+    String displayScore = "Your Score: " + score;
+    text (displayScore, width-120, 80);
   } else {
     john.outOfBounds();
   }
