@@ -5,8 +5,8 @@ class Coin {
   PImage img;
 
   public Coin () {
-    x = (float) random(width - 10);
-    y = (float) random(height - 10);
+    x = (float) random(width - 50);
+    y = (float) random(height - 50);
     img = loadImage("coin.png");
   }
 
