@@ -1,4 +1,5 @@
 import ketai.sensors.*;
+//import java.lang.Math;
 KetaiSensor sensor;
 float accelerometerX, accelerometerY, accelerometerZ;
 
@@ -67,15 +68,19 @@ class Circle {
       // String displayScore = "Highscore: " + highScore "\n" + "Your Score: " + score;
       String displayScore = "Your Score: " + score;
       text (displayScore, width-120, 80);
-    }
-    if (mousePressed) {
+      
+      if (mousePressed) {
         end = false;
         score = 0;
         enemies.clear();
         coins.clear();
-        coins.add(new Coin());
-        x = (int) (Math.random()*(width-100)+100);
-        y = (int) (Math.random()*(height-100)+100);
+        coins.add(new Coin());  
+        x = random(width-100)+100;
+        y = random(height-100)+100;
+        //x = (int) (Math.random()*(width-100)+100);
+        //y = (int) (Math.random()*(height-100)+100);
+      }
     }
   }
+}
 }
