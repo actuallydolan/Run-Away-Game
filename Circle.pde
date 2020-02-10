@@ -68,5 +68,14 @@ class Circle {
       String displayScore = "Your Score: " + score;
       text (displayScore, width-120, 80);
     }
+    if (mousePressed) {
+        end = false;
+        score = 0;
+        enemies.clear();
+        coins.clear();
+        coins.add(new Coin());
+        x = (int) (Math.random()*(width-100)+100);
+        y = (int) (Math.random()*(height-100)+100);
+    }
   }
 }
