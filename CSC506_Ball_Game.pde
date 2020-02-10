@@ -1,8 +1,14 @@
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.context.Context;
+import android.app.Activity;
+
 Circle john = new Circle(200, 200, 25);
 ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 ArrayList<Coin> coins = new ArrayList<Coin> ();
 int borderStroke = 10;
 int score = 0;
+int highscore = 0;
 boolean end = false;
 PFont font;
 
@@ -15,6 +21,32 @@ void setup()
   sensor.start();
   orientation(PORTRAIT);
   textSize(36);
+  highscore = loadInt("highscore");
+}
+void saveHighScore(int score, String a) {
+  if(score > highscore) {
+    highscore = score;
+  }
+  SharedPreferences sharedPreferences; 
+  SharedPreferences.Editor editor;
+  Activity act;
+  act = this.getActivity();
+  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act.getApplicationContext());
+  editor = sharedPreferences.edit();
+  editor.putInt(a, score);
+  editor.commit();
+}
+int loadHighScore(String n) {
+  SharedPreferences sharedPreferences;
+  Activity act;
+  act = this.getActivity();
+  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act.getApplicationContext());
+  int getScore = sharedPreferences.getInt(n);
+  return getScore;
+}
+void onPause() {
+  super.onPause();
+  saveHighScore(highscore, "highscore");
 }
 
 void draw()
