@@ -3,9 +3,10 @@ import android.preference.PreferenceManager;
 import android.context.Context;
 import android.app.Activity;
 
-Circle john = new Circle(200, 200, 25);
+Circle john = new Circle(200, 200, 1);
 ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 ArrayList<Coin> coins = new ArrayList<Coin> ();
+ArrayList<PowerUp> powerups = new ArrayList<PowerUp> ();
 int borderStroke = 10;
 int score = 0;
 int highscore = 0;

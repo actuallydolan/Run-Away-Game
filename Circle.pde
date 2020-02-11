@@ -26,28 +26,47 @@ class Circle {
     for (int i = 0; i < enemies.size(); i ++) {
       enemies.get(i).display();
       enemies.get(i).move(john);
-      punch(enemies.get(i)); //checks if grinch hits player
+      punch(enemies.get(i));
+    }
+    while (score%4==0 && powerups.size()==0) {
+      powerups.add(new PowerUp(random(width), random(height)));
+      if (powerups.size()>0) {
+        collect(powerups.get(0));
+      }
     }
   }
 
   public void punch(Enemy other) {//player grinch overlap method
     float distance_x = other.x - x;
     float distance_y = other.y - y;
-
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
     if (distance < (16)) {
       john.outOfBounds();
       end = true;
     }
   }
-
+  
+  public void collect(PowerUp other) {
+    float distance_x = other.x - x;
+    float distance_y = other.y - y;
+    float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
+    if (distance < (20)) {
+      john.powerUp();
+      score++;
+      powerups.clear();
+    }
+  }
+  
+  public void powerUp() {
+    speed++;
+  }
   public void display() {
     circle(x, y, 25);
   }
 
   public void move() {
-    x -= accelerometerX;
-    y += accelerometerY;
+    x -= accelerometerX*speed;
+    y += accelerometerY*speed;
   }
 
   void outOfBounds() {
@@ -68,7 +87,7 @@ class Circle {
       // String displayScore = "Highscore: " + highScore "\n" + "Your Score: " + score;
       String displayScore = "Your Score: " + score;
       text (displayScore, width-120, 80);
-      
+
       if (mousePressed) {
         end = false;
         score = 0;
