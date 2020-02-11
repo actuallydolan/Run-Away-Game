@@ -1,3 +1,15 @@
+//* low priority ** med priority *** high priority
+//TODO:*** persistence!!!! - harrison
+//TODO:*** fix collisions, img to center - joseph
+//TODO:*** classic mode - dylan
+//TODO:*** sound and music! - joseph
+//TODO:*** UI design - dylan
+//TODO:** lives - 
+//TODO:** button highlight when pressed
+//TODO:** easter eggs on tap - dylan
+//TODO:* character selection
+
+
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
