@@ -3,16 +3,48 @@ class PowerUp {
   float y;
   float radius = 20;
   PImage img;
-  
+  int type = 0;
+
   PowerUp(float xx, float yy) {
     x = xx;
     y = yy;
-    img = loadImage("powerup.png");
+    type = (int)random(1);
   }
-  
+
   void display() {
-    image (img, x, y);
+    if (type == 0) {
+      img = loadImage("powerup.png");
+      image (img, x, y);
+    } else if (type == 1) {
+      img = loadImage("powerup2.png");
+      image (img, x, y);
+    }
   }
-  
-  
+
+  void activate() {
+    if (type == 0) {
+      long start = System.currentTimeMillis();
+      long end = start + 10*1000; // 10 seconds * 1000 ms/sec
+      while (System.currentTimeMillis() < end) {
+        speedUp();
+      }
+    } else if (type == 1) {
+      long start = System.currentTimeMillis();
+      long end = start + 10*1000; // 10 seconds * 1000 ms/sec
+      while (System.currentTimeMillis() < end) {
+        slowDown();
+      }
+    }
+  }
+
+  void speedUp() {
+    john.speed++;
+  }
+
+  void slowDown() {
+    for (int i = 0; i < enemies.size(); i ++) {
+      enemies.get(i).slowDown();
+    }
+  }
+
 }

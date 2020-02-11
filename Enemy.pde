@@ -24,4 +24,8 @@ class Enemy {
     x -= cos(angle)*speed;
     y -= sin(angle)*speed;
   }
+  
+  void slowDown() {
+    speed--;
+  }
 }

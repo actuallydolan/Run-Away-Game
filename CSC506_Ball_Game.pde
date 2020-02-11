@@ -1,5 +1,6 @@
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
 import android.context.Context;
 import android.app.Activity;
 

@@ -5,7 +5,7 @@ float accelerometerX, accelerometerY, accelerometerZ;
 
 class Circle {
 
-  private float speed;  
+  public float speed;  
   private float x;
   private float y;
 
@@ -30,9 +30,10 @@ class Circle {
     }
     while (score%4==0 && powerups.size()==0) {
       powerups.add(new PowerUp(random(width), random(height)));
-      if (powerups.size()>0) {
-        collect(powerups.get(0));
-      }
+    }
+    if (powerups.size()>0) {
+      powerups.get(0).display();
+      collect(powerups.get(0));
     }
   }
 
@@ -45,21 +46,19 @@ class Circle {
       end = true;
     }
   }
-  
+
   public void collect(PowerUp other) {
     float distance_x = other.x - x;
     float distance_y = other.y - y;
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
     if (distance < (20)) {
-      john.powerUp();
+      other.activate();
       score++;
       powerups.clear();
     }
   }
-  
-  public void powerUp() {
-    speed++;
-  }
+
+
   public void display() {
     circle(x, y, 25);
   }
