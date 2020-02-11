@@ -10,9 +10,20 @@ class Coin {
     img = loadImage("coin.png");
   }
 
+  public Coin (float xx, float yy) {
+    x = xx;
+    y = yy;
+    img = loadImage("coin.png");
+  }
+
   public void update() {
     show();
     checkCollide(john);
+  }
+  
+  public void update2() {
+    show();
+    checkCollide2(john);
   }
 
   public void checkCollide(Circle other) {
@@ -20,14 +31,27 @@ class Coin {
     float distance_y = other.y - y;
 
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
-    if (distance < (15)) {
+    if (distance < (40)) {
       coins.clear();
       score++;
       coins.add(new Coin());
-    } 
+    }
+  }
+
+  public void checkCollide2(Circle other) {
+    float distance_x = other.x - x;
+    float distance_y = other.y - y;
+
+    float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
+    if (distance < (40)) {
+      coins.clear();
+      score++;
+      coins.add(new Coin(random(borderStroke+50, width-borderStroke-50), 
+        random(borderStroke+50, height-borderStroke-50)));
+    }
   }
 
   public void show() {
-    image (img, x, y);
+    image(img, x, y);
   }
 }

@@ -5,10 +5,15 @@ class PowerUp {
   PImage img;
   int type = 0;
 
+  PowerUp() {
+    x = (float) random(width - 50);
+    y = (float) random(height - 50);
+    type = Math.round(random(1));
+  }
+
   PowerUp(float xx, float yy) {
     x = xx;
     y = yy;
-    type = (int)random(1);
   }
 
   void display() {
@@ -23,17 +28,17 @@ class PowerUp {
 
   void activate() {
     if (type == 0) {
-      long start = System.currentTimeMillis();
-      long end = start + 10*1000; // 10 seconds * 1000 ms/sec
-      while (System.currentTimeMillis() < end) {
-        speedUp();
-      }
+      //long start = System.currentTimeMillis();
+      //long end = start + 10*1000; // 10 seconds * 1000 ms/sec
+      //while (System.currentTimeMillis() < end) {
+      speedUp();
+      //}
     } else if (type == 1) {
-      long start = System.currentTimeMillis();
-      long end = start + 10*1000; // 10 seconds * 1000 ms/sec
-      while (System.currentTimeMillis() < end) {
-        slowDown();
-      }
+      //long start = System.currentTimeMillis();
+      //long end = start + 10*1000; // 10 seconds * 1000 ms/sec
+      //while (System.currentTimeMillis() < end) {
+      slowDown();
+      //}
     }
   }
 
@@ -46,5 +51,4 @@ class PowerUp {
       enemies.get(i).slowDown();
     }
   }
-
 }
