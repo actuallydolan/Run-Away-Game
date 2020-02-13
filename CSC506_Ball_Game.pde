@@ -26,6 +26,8 @@ int score = 0;
 int highscore = 0;
 PFont font;
 int level = 0;
+boolean music = true;
+boolean clickDelay = false;
 
 
 SoundFile deathtetris;
@@ -33,6 +35,7 @@ SoundFile nyancat;
 SoundFile sonicremix;
 SoundFile minecraft;
 SoundFile fallenkingdom;
+SoundFile coin;
 int musicSelection = Math.round(random(3));
 
 
@@ -44,18 +47,7 @@ void setup()
   sonicremix = new SoundFile(this, "sonicremix.mp3");
   minecraft = new SoundFile(this, "minecraft.mp3");
   fallenkingdom = new SoundFile(this, "fallenkingdom.mp3");
-  if (musicSelection == 0) {
-    deathtetris.loop();
-  } else if (musicSelection == 1) {
-    nyancat.loop();
-  } else if (musicSelection == 2) {
-    sonicremix.loop();
-  } else if (musicSelection == 3) {
-    minecraft.loop();
-  } else {
-    fallenkingdom.loop();
-  }
-
+  playMusic();
   font = createFont("RetroGaming.ttf", 32);
   textFont(font);
   sensor = new KetaiSensor(this);
@@ -65,6 +57,11 @@ void setup()
   textSize(36);
   highscore = loadHighScore("highscore");
   imageMode(CENTER);
+}
+
+public void playCoin() {
+  coin = new SoundFile(this, "coin.mp3");
+  coin.play();
 }
 
 void saveHighScore(int score, String a) {
@@ -94,6 +91,38 @@ void onPause() {
   saveHighScore(highscore, "highscore");
 }
 
+void musicOnOrOff() {
+  if (music) {
+    music = false;
+    deathtetris.stop();
+    nyancat.stop();
+    sonicremix.stop();
+    minecraft.stop();
+    fallenkingdom.stop();
+  } else {
+    playMusic();
+  }
+}
+
+void playMusic() {
+  if (musicSelection == 0) {
+    deathtetris.loop();
+    print("hi1");
+  } else if (musicSelection == 1) {
+    nyancat.loop();
+     print("hi2");
+  } else if (musicSelection == 2) {
+    sonicremix.loop();
+     print("hi3");
+  } else if (musicSelection == 3) {
+    minecraft.loop();
+     print("hi3");
+  } else {
+    fallenkingdom.loop();
+     print("hi5");
+  }
+}
+
 void draw()
 {
   if (level==0) {
@@ -110,7 +139,13 @@ void draw()
     rectMode(CENTER);
     //rect(width/2, 930, 500, 60);
     //rect(width/2, 1070, 500, 60);
-    if (mousePressed) {
+    rect(50, height-50, 40, 40);
+    rectMode(CORNER);
+    if (mousePressed && clickDelay == false) {
+      clickDelay = true;
+      if (mouseX>30 && mouseX<70 && mouseY > height-70 && mouseY < height-30) {
+        musicOnOrOff();
+      }
       if (mouseX > width/2-250 && mouseX < width/2+250 && mouseY > 930-30 && mouseY <930+30) {
         level = 1;
       }
@@ -119,7 +154,6 @@ void draw()
       }
     }
   }
-  rectMode(CORNER);
   if (level==1) {
     background(0, 0, 0);
     textAlign(RIGHT);
@@ -160,9 +194,14 @@ void draw()
   }
 }
 
+
 void onAccelerometerEvent(float x, float y, float z)
 {
   accelerometerX = x;
   accelerometerY = y;
   accelerometerZ = z;
+}
+
+void mouseReleased() {
+  clickDelay = false;
 }

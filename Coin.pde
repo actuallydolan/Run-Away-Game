@@ -1,5 +1,3 @@
-
-
 class Coin {
   
   private float x;
@@ -37,6 +35,7 @@ class Coin {
       coins.clear();
       score++;
       coins.add(new Coin());
+      playCoin();
     }
   }
 
