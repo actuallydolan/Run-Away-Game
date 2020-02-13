@@ -26,6 +26,10 @@ class Enemy {
   }
   
   void slowDown() {
-    speed--;
+    speed=0.3*speed;
+  }
+  
+  void runAway() {
+    speed*=-1;
   }
 }

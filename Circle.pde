@@ -36,7 +36,7 @@ class Circle {
       collect(powerups.get(0));
     }
   }
-  
+
   public void update2() {
     display();
     move();
@@ -51,8 +51,8 @@ class Circle {
       punch(enemies.get(i));
     }
     while (score%4==0 && powerups.size()==0) {
-      powerups.add(new PowerUp(random(borderStroke+50, width-borderStroke-50),
-      random(borderStroke+50, height-borderStroke-50)));
+      powerups.add(new PowerUp(random(borderStroke+50, width-borderStroke-50), 
+        random(borderStroke+50, height-borderStroke-50)));
     }
     if (powerups.size()>0) {
       powerups.get(0).display();
@@ -109,6 +109,8 @@ class Circle {
       // String displayScore = "Highscore: " + highScore "\n" + "Your Score: " + score;
       String displayScore = "Your Score: " + score;
       text (displayScore, width/2, 80);
+      saveHighScore(score, "highscore");
+      text ("HIGHSCORE: " + highscore, width/2, 130); 
 
       if (mousePressed) {
         level = 0;
@@ -126,10 +128,10 @@ class Circle {
       }
     }
   }
-  
+
   void outOfBounds2() {
     if (john.x>width-borderStroke-22.5 || john.y>height-borderStroke-22.5 
-    || john.x<borderStroke+22.5 || john.y<borderStroke+22.5) {
+      || john.x<borderStroke+22.5 || john.y<borderStroke+22.5) {
       level = 2;
     }
 
@@ -146,6 +148,8 @@ class Circle {
       // String displayScore = "Highscore: " + highScore "\n" + "Your Score: " + score;
       String displayScore = "Your Score: " + score;
       text (displayScore, width/2, 80);
+      saveHighScore(score, "highscore");
+      text ("HIGHSCORE: " + highscore, width/2, 130); 
 
       if (mousePressed) {
         level = 0;

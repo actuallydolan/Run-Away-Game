@@ -37,7 +37,7 @@ class PowerUp {
       //long start = System.currentTimeMillis();
       //long end = start + 10*1000; // 10 seconds * 1000 ms/sec
       //while (System.currentTimeMillis() < end) {
-      slowDown();
+      runAway();
       //}
     }
   }
@@ -49,6 +49,12 @@ class PowerUp {
   void slowDown() {
     for (int i = 0; i < enemies.size(); i ++) {
       enemies.get(i).slowDown();
+    }
+  }
+
+  void runAway() {
+    for (int i = 0; i < enemies.size(); i ++) {
+      enemies.get(i).runAway();
     }
   }
 }

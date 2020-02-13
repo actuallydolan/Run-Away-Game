@@ -13,7 +13,7 @@
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-//import android.context.Context;
+import android.content.Context;
 import android.app.Activity;
 
 Circle john = new Circle(200, 200, 1);
@@ -35,33 +35,35 @@ void setup()
   sensor.start();
   orientation(PORTRAIT);
   textSize(36);
-  // highscore = loadInt("highscore");
+  highscore = loadHighScore("highscore");
 }
-//void saveHighScore(int score, String a) {
-//  if(score > highscore) {
-//    highscore = score;
-//  }
-//  SharedPreferences sharedPreferences; 
-//  SharedPreferences.Editor editor;
-//  Activity act;
-//  act = this.getActivity();
-//  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act.getApplicationContext());
-//  editor = sharedPreferences.edit();
-//  editor.putInt(a, score);
-//  editor.commit();
-//}
-//int loadHighScore(String n) {
-//  SharedPreferences sharedPreferences;
-//  Activity act;
-//  act = this.getActivity();
-//  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act.getApplicationContext());
-//  //int getScore = sharedPreferences.getInt(n);
-//  //return getScore;
-//}
-//void onPause() {
-//  super.onPause();
-//  saveHighScore(highscore, "highscore");
-//}
+
+void saveHighScore(int score, String a) {
+  if(score > highscore) {
+    highscore = score;
+  }
+  SharedPreferences sharedPreferences; 
+  SharedPreferences.Editor editor;
+  Activity act;
+  act = this.getActivity();
+  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act.getApplicationContext());
+  editor = sharedPreferences.edit();
+  editor.putInt(a, score);
+  editor.commit();
+}
+
+int loadHighScore(String n) {
+  SharedPreferences sharedPreferences;
+  Activity act;
+  act = this.getActivity();
+  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(act.getApplicationContext());
+  int getScore = sharedPreferences.getInt(n, 0);
+  return getScore;
+}
+void onPause() {
+  super.onPause();
+  saveHighScore(highscore, "highscore");
+}
 
 void draw()
 {
