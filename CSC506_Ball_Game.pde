@@ -1,6 +1,7 @@
+import cassette.audiofiles.SoundFile;
+import processing.sound.*;
+
 //* low priority ** med priority *** high priority
-//TODO:*** persistence!!!! - harrison
-//TODO:*** fix collisions, img to center - joseph
 //TODO:*** classic mode - dylan
 //TODO:*** sound and music! - joseph
 //TODO:*** UI design - dylan
@@ -8,7 +9,7 @@
 //TODO:** button highlight when pressed
 //TODO:** easter eggs on tap - dylan
 //TODO:* character selection
-
+//TODO: ***fix powerup to three
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -26,8 +27,35 @@ int highscore = 0;
 PFont font;
 int level = 0;
 
+
+SoundFile deathtetris;
+SoundFile nyancat;
+SoundFile sonicremix;
+SoundFile minecraft;
+SoundFile fallenkingdom;
+int musicSelection = Math.round(random(3));
+
+
+
 void setup()
 {
+  deathtetris = new SoundFile(this, "deathmodetetris.mp3");
+  nyancat = new SoundFile(this, "nyancat.mp3");
+  sonicremix = new SoundFile(this, "sonicremix.mp3");
+  minecraft = new SoundFile(this, "minecraft.mp3");
+  fallenkingdom = new SoundFile(this, "fallenkingdom.mp3");
+  if (musicSelection == 0) {
+    deathtetris.loop();
+  } else if (musicSelection == 1) {
+    nyancat.loop();
+  } else if (musicSelection == 2) {
+    sonicremix.loop();
+  } else if (musicSelection == 3) {
+    minecraft.loop();
+  } else {
+    fallenkingdom.loop();
+  }
+
   font = createFont("RetroGaming.ttf", 32);
   textFont(font);
   sensor = new KetaiSensor(this);
@@ -36,10 +64,11 @@ void setup()
   orientation(PORTRAIT);
   textSize(36);
   highscore = loadHighScore("highscore");
+  imageMode(CENTER);
 }
 
 void saveHighScore(int score, String a) {
-  if(score > highscore) {
+  if (score > highscore) {
     highscore = score;
   }
   SharedPreferences sharedPreferences; 
