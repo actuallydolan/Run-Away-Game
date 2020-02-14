@@ -20,7 +20,7 @@ class Circle {
     move();
     outOfBounds();
     coins.get(0).update();
-    while (enemies.size() < score) { 
+    while (enemies.size()*2 < score) { 
       enemies.add(new Enemy(random(width), random(height), random(1+0.1*score, 3+0.1*score)));
     }
     for (int i = 0; i < enemies.size(); i ++) {

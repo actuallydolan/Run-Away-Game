@@ -10,6 +10,7 @@ import processing.sound.*;
 //TODO:** easter eggs on tap - dylan
 //TODO:* character selection
 //TODO: ***fix powerup to three
+//TODO:***add mute button
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
