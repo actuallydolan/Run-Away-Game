@@ -29,6 +29,10 @@ PFont font;
 int level = 0;
 boolean music = true;
 boolean clickDelay = false;
+boolean steve = false;
+boolean kirby = false;
+PImage steveImg ;
+PImage kirbyImg ;
 
 
 SoundFile deathtetris;
@@ -111,16 +115,16 @@ void playMusic() {
     print("hi1");
   } else if (musicSelection == 1) {
     nyancat.loop();
-     print("hi2");
+    print("hi2");
   } else if (musicSelection == 2) {
     sonicremix.loop();
-     print("hi3");
+    print("hi3");
   } else if (musicSelection == 3) {
     minecraft.loop();
-     print("hi3");
+    print("hi3");
   } else {
     fallenkingdom.loop();
-     print("hi5");
+    print("hi5");
   }
 }
 
@@ -135,15 +139,70 @@ void draw()
     textSize(36);
     text("A RETRO GAME BY", width/2, 300);
     text("JOSEPH CHEN \nDYLAN SHEN \nHARRISON HE", width/2, 400);
-    fill(184, 15, 10);
-    text("CHOOSE YOUR DIFFICULTY \n\n\nREGULAR MODE \n\n\nTIME CHALLENGE MODE", width/2, 800);
     rectMode(CENTER);
+
+    if (mouseX > width/2-200 && mouseX < width/2+200 && mouseY > 375 - 25 && mouseY < 375 + 25) {
+      fill(0, 0, 0);
+      rect(width/2, 375, 300, 50); //easter egg for Joseph
+      fill(212, 175, 55);
+      text("@jo.sephhiiee", width/2, 395);
+    }
+    if (mouseX > width/2-200 && mouseX < width/2+200 && mouseY > 425-25 && mouseY < 425+25) {
+      fill(0, 0, 0);
+      rect(width/2, 425, 300, 50);//easter egg for Dylan
+      fill(212, 175, 55);
+      text("@dylan.the.human", width/2, 445);
+    }
+
+    fill(184, 15, 10);
+    text("YOUR HIGHSCORE: " + highscore + "\n\n\nREGULAR MODE \n\n\nTIME CHALLENGE MODE", width/2, 800);
+    rectMode(CENTER);
+
     //rect(width/2, 930, 500, 60);
     //rect(width/2, 1070, 500, 60);
+
     rect(50, height-50, 40, 40);
+    textAlign(LEFT);
+    text("<-- SUPER MUTE", 100, height-40);
+    textAlign(CENTER);
+    fill(0, 0, 0);
+    if (!kirby && !steve) {
+      fill(102, 102, 102);
+    }
+    circle(width/2, height/2+20, 130);
+    fill(85, 179, 247);
+    circle(width/2, height/2+20, 100);
+    fill(0, 0, 0);
+    if (kirby == true) {
+      fill(102, 102, 102);
+    }
+    circle(width/2-250, height/2+20, 130);
+    kirbyImg = loadImage("kirbyFix.png");
+    kirbyImg.resize(100, 0);
+    image(kirbyImg, width/2-250, height/2+20);
+    fill(0, 0, 0);
+    if (steve == true) {
+      fill(102, 102, 102);
+    }
+    circle(width/2+250, height/2+20, 130);
+    steveImg = loadImage("steve.png");
+    steveImg.resize(100, 0);
+    image(steveImg, width/2+250, height/2+20);
     rectMode(CORNER);
     if (mousePressed && clickDelay == false) {
       clickDelay = true;
+      if (mouseX>width/2-250-75 && mouseX<width/2-250+75 && mouseY > height/2+20-75 && mouseY <height/2+20+75) {
+        kirby = true;
+        steve = false;
+      }
+      if (mouseX>width/2+250-75 && mouseX<width/2+250+75 && mouseY > height/2+20-75 && mouseY <height/2+20+75) {
+        kirby = false;
+        steve = true;
+      }
+      if (mouseX>width/2-75 && mouseX<width/2+75 && mouseY > height/2+20-75 && mouseY <height/2+20+75) {
+        kirby = false;
+        steve = false;
+      }
       if (mouseX>30 && mouseX<70 && mouseY > height-70 && mouseY < height-30) {
         musicOnOrOff();
       }
@@ -168,9 +227,12 @@ void draw()
     rect(0, height - borderStroke, width, borderStroke);
     noStroke();
     rect(0, 0, borderStroke, height);
-    String displayScore = "Your Score: " + score;
-    textSize(22);
-    text (displayScore, width-100, 80);
+
+    textSize(36);
+    fill(212, 175, 55);
+    textAlign(CENTER);
+    text("Highscore: " + highscore, width-175, 50);
+    text ("Your Score: " + score, width-190, 80);
   } 
   if (level==2) {
     john.outOfBounds();
@@ -189,9 +251,11 @@ void draw()
     rect(0, height - borderStroke, width, borderStroke);
     noStroke();
     rect(0, 0, borderStroke, height);
-    String displayScore = "Your Score: " + score;
-    textSize(22);
-    text (displayScore, width-100, 80);
+    textSize(36);
+    fill(212, 175, 55);
+    textAlign(CENTER);
+    text("Highscore: " + highscore, width-175, 50);
+    text ("Your Score: " + score, width-190, 80);
   }
 }
 

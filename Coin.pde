@@ -5,8 +5,8 @@ class Coin {
   PImage img;
 
   public Coin () {
-    x = (float) random(width - 100) + 100;
-    y = (float) random(height - 100) + 100;
+    x = (float) random(width - 200) + 100;
+    y = (float) random(height - 200) + 100;
     img = loadImage("coin.png");
   }
 
@@ -31,7 +31,7 @@ class Coin {
     float distance_y = other.y - y;
 
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
-    if (distance < (20)) {
+    if (distance < (30)) {
       coins.clear();
       score++;
       coins.add(new Coin());
@@ -44,7 +44,7 @@ class Coin {
     float distance_y = other.y - y;
 
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
-    if (distance < (20)) {
+    if (distance < (30)) {
       coins.clear();
       score++;
       coins.add(new Coin(random(borderStroke+50, width-borderStroke-50), 

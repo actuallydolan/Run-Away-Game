@@ -3,6 +3,8 @@ import ketai.sensors.*;
 KetaiSensor sensor;
 float accelerometerX, accelerometerY, accelerometerZ;
 
+PImage img;
+
 class Circle {
 
   public float speed;  
@@ -64,7 +66,7 @@ class Circle {
     float distance_x = other.x - x;
     float distance_y = other.y - y;
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
-    if (distance < (25)) {
+    if (distance < (30)) {
       john.outOfBounds();
       level = 2;
     }
@@ -74,7 +76,7 @@ class Circle {
     float distance_x = other.x - x;
     float distance_y = other.y - y;
     float distance = sqrt(distance_x * distance_x + distance_y * distance_y);
-    if (distance < (45)) {
+    if (distance < (50)) {
       other.activate();
       score++;
       powerups.clear();
@@ -83,7 +85,18 @@ class Circle {
 
 
   public void display() {
-    circle(x, y, 25);
+    //circle(x, y, 25);
+    if (steve == true) {
+      img = loadImage("steve.png");
+      image(img, x, y);
+    } else if (kirby == true) {
+      img = loadImage("kirbyFix.png");
+      image(img, x, y);
+    } else {
+      fill(85, 179, 247);
+      circle(x, y, 50);
+      fill(255, 255, 255);
+    }
   }
 
   public void move() {

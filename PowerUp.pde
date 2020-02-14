@@ -6,8 +6,8 @@ class PowerUp {
   int type = 0;
 
   PowerUp() {
-    x = (float) random(width - 100) + 100;
-    y = (float) random(height -  100) + 100;
+    x = (float) random(width - 200) + 100;
+    y = (float) random(height -  200) + 100;
     type = Math.round(random(1));
   }
 
