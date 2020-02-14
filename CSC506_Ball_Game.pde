@@ -155,11 +155,11 @@ void draw()
     }
 
     fill(184, 15, 10);
-    text("YOUR HIGHSCORE: " + highscore + "\n\n\nREGULAR MODE \n\n\nTIME CHALLENGE MODE", width/2, 800);
+    text("YOUR HIGHSCORE: " + highscore + "\n\nREGULAR MODE \n\nTIME CHALLENGE MODE", width/2, 800);
     rectMode(CENTER);
 
-    //rect(width/2, 930, 500, 60);
-    //rect(width/2, 1070, 500, 60);
+    //    rect(width/2, 880, 500, 60); guideboxes for level selection
+    //    rect(width/2, 980, 500, 60);
 
     rect(50, height-50, 40, 40);
     textAlign(LEFT);
@@ -206,10 +206,10 @@ void draw()
       if (mouseX>30 && mouseX<70 && mouseY > height-70 && mouseY < height-30) {
         musicOnOrOff();
       }
-      if (mouseX > width/2-250 && mouseX < width/2+250 && mouseY > 930-30 && mouseY <930+30) {
+      if (mouseX > width/2-250 && mouseX < width/2+250 && mouseY > 880-30 && mouseY <880+30) {
         level = 1;
       }
-      if (mouseX > width/2-250 && mouseX < width/2+250 && mouseY > 1070-30 && mouseY < 1070+30) {
+      if (mouseX > width/2-250 && mouseX < width/2+250 && mouseY > 980-30 && mouseY < 980+30) {
         level = 3;
       }
     }
@@ -228,11 +228,11 @@ void draw()
     noStroke();
     rect(0, 0, borderStroke, height);
 
-    textSize(36);
+    textSize(30);
     fill(212, 175, 55);
     textAlign(CENTER);
     text("Highscore: " + highscore, width-175, 50);
-    text ("Your Score: " + score, width-190, 80);
+    text ("Your Score: " + score, width-190, 90);
   } 
   if (level==2) {
     john.outOfBounds();
@@ -255,7 +255,7 @@ void draw()
     fill(212, 175, 55);
     textAlign(CENTER);
     text("Highscore: " + highscore, width-175, 50);
-    text ("Your Score: " + score, width-190, 80);
+    text ("Your Score: " + score, width-190, 90);
   }
 }
 

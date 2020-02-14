@@ -123,7 +123,7 @@ class Circle {
       String displayScore = "Your Score: " + score;
       text (displayScore, width/2, 80);
       saveHighScore(score, "highscore");
-      text ("HIGHSCORE: " + highscore, width/2, 130); 
+      text ("Highscore: " + highscore, width/2, 130); 
 
       if (mousePressed) {
         level = 0;
@@ -162,7 +162,7 @@ class Circle {
       String displayScore = "Your Score: " + score;
       text (displayScore, width/2, 80);
       saveHighScore(score, "highscore");
-      text ("HIGHSCORE: " + highscore, width/2, 130); 
+      text ("Highscore: " + highscore, width/2, 130); 
 
       if (mousePressed) {
         level = 0;
